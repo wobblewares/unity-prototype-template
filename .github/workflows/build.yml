@@ -19,6 +19,16 @@ jobs:
           path: project
           fetch-depth: 0
           lfs: true
+          
+      # Cache Library folder
+      - name: Use Library Cache
+        uses: actions/cache@v3
+        with:
+          path: project/Library
+          key: library-unityprojecttemplate-macos
+          restore-keys: |
+            library-unityprojecttemplate
+            library
       
       # Build mac standalone
       - name: Build Standalone OSX v${{ github.ref_name }}
