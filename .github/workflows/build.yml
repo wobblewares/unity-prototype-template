@@ -39,3 +39,12 @@ jobs:
         with:
           name: OSXBuild
           path: build
+          
+      - name: Upload to itch.io
+        uses: robpc/itchio-upload-action@v1
+        with:
+          path: build/
+          project: wobblewares/unity-project-template
+          channel: macos
+          version: ${{ github.ref_name }}
+          api-key: ${{ secrets.ITCH_API_KEY }}
